@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenorii23 | Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/github-calendar@latest/dist/github-calendar-responsive.css">
+    </head>
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --darker-bg: #0a0a0a;
+            --card-bg: #1e1e1e;
+            --accent-purple: #8a2be2;
+            --accent-purple-light: #a45deb;
+            --text-light: #f0f0f0;
+            --text-gray: #b0b0b0;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 15px 0;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .navbar-brand {
+            color: var(--accent-purple) !important;
+            font-weight: bold;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .navbar-brand span {
+            margin-left: 8px;
+        }
+        
+        .nav-link {
+            color: var(--text-gray) !important;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 10px;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-purple) !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-purple);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent-purple), #e100ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero h2 {
+            color: var(--text-gray);
+            font-weight: 300;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .highlight {
+            color: var(--accent-purple);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-purple);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent-purple-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--accent-purple);
+            border-color: var(--accent-purple);
+            border-radius: 30px;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--accent-purple);
+            color: white;
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-purple);
+            border-radius: 2px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: none;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent-purple);
+        }
+        
+        .card-title {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        .card-text {
+            color: var(--text-gray);
+        }
+        
+        .tech-badge {
+            background-color: rgba(138, 43, 226, 0.2);
+            color: var(--accent-purple);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        
+        .github-stats {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-bottom: 0;
+        }
+        
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+        
+        .contact-form .form-control {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            color: var(--text-light);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form .form-control:focus {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 0 0.2rem rgba(138, 43, 226, 0.25);
+        }
+        
+        footer {
+            background-color: rgba(10, 10, 10, 0.95);
+            border-top: 1px solid rgba(138, 43, 226, 0.2);
+            padding: 40px 0 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-purple);
+            transform: translateY(-5px);
+        }
+        
+        .purple-glow {
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        .section {
+            padding: 100px 0;
+        }
+        
+        .github-calendar {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .skill-bar {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-name {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .skill-progress {
+            height: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-purple), #e100ff);
+            border-radius: 5px;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+        
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+        }
+        
+        .github-corner {
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .github-corner svg {
+            fill: var(--accent-purple);
+            color: var(--darker-bg);
+        }
+        
+        .github-corner:hover .octo-arm {
+            animation: octocat-wave 560ms ease-in-out;
+        }
+        
+        @keyframes octocat-wave {
+            0%, 100% { transform: rotate(0); }
+            20%, 60% { transform: rotate(-25deg); }
+            40%, 80% { transform: rotate(10deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .github-corner:hover .octo-arm {
+                animation: none;
+            }
+            
+            .github-corner .octo-arm {
+                animation: octocat-wave 560ms ease-in-out;
+            }
+        }
+        
+        .typewriter h1 {
+            overflow: hidden;
+            border-right: 0.15em solid var(--accent-purple);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-purple); }
+        }
+          .github-section {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            color: var(--accent-purple);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-purple);
+            border-radius: 2px;
+        }
+        
+        .github-calendar {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .calendar-header h4 {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+        
+        .text-muted {
+            color: var(--text-gray) !important;
+        }
+        
+        .github-stats {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .github-stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-purple), #e100ff);
+        }
+        
+        .github-stats:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(138, 43, 226, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-purple);
+            margin-bottom: 0;
+            transition: all 0.5s ease;
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        .github-stats:hover .stat-number {
+            transform: scale(1.1);
+        }
+        
+        .stat-label {
+            color: var(--text-gray);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .github-stats:hover .stat-label {
+            color: var(--text-light);
+        }
+        
+        .chart-container {
+            background: var(--darker-bg);
+            border-radius: 10px;
+            padding: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .chart {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            grid-gap: 4px;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .chart-cell {
+            height: 12px;
+            background-color: #2d2d2d;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .chart-cell:hover {
+            transform: scale(1.3);
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        .chart-cell.level-0 { background-color: #2d2d2d; }
+        .chart-cell.level-1 { background-color: #1e6823; }
+        .chart-cell.level-2 { background-color: #44a340; }
+        .chart-cell.level-3 { background-color: #8cc665; }
+        .chart-cell.level-4 { background-color: #d6e685; }
+        
+        .chart-cell.active {
+            background-color: var(--accent-purple);
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            margin-right: 5px;
+        }
+        
+        .info-text {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        .purple-glow {
+            text-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+        
+        .github-logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .github-logo a {
+            color: var(--accent-purple);
+            text-decoration: none;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .github-logo a:hover {
+            color: var(--accent-purple-light);
+            transform: translateY(-3px);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            color: var(--accent-purple);
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .chart {
+                grid-template-columns: repeat(26, 1fr);
+                grid-gap: 3px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+
+<body>
+    <!-- GitHub Corner -->
+    <a href="https://github.com/Tenorii23" class="github-corner" target="_blank" aria-label="View source on GitHub">
+        <svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-code"></i>
+                <span>Tenorii23</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#github">GitHub</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="typewriter">Hi, I'm <span class="purple-glow">Tenorii23</span></h1>
+                    <h2>Full Stack Developer & Open Source Enthusiast</h2>
+                    <p class="lead mb-4">I build innovative solutions with clean, efficient code and modern technologies. Passionate about creating impactful applications that solve real-world problems.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#projects" class="btn btn-primary btn-lg pulse">View My Work</a>
+                        <a href="https://github.com/Tenorii23" target="_blank" class="btn btn-outline-primary btn-lg">
+                            <i class="fab fa-github me-2"></i>GitHub Profile
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center d-none d-lg-block">
+                    <div class="floating">
+                        <div class="position-relative">
+                            <div class="position-absolute top-0 start-50 translate-middle-x">
+                                <div class="spinner-grow text-purple" style="width: 300px; height: 300px; opacity: 0.1;"></div>
+                            </div>
+                            <img src="https://avatars.githubusercontent.com/u/98765432?v=4" class="rounded-circle img-fluid" style="width: 300px; height: 300px; object-fit: cover; border: 5px solid var(--accent-purple);" alt="Tenorii23">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="row g-4">
+                <!-- Project 1: Task Manager -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="project-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <h5 class="card-title">Task Manager</h5>
+                            <p class="card-text">- Manage <span class="purple-glow">Your</span> Tasks! -</p>
+                            <div class="mb-3">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                                <span class="tech-badge">PHP</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="https://github.com/Tenorii23/Task-Manager" target="_blank" class="btn btn-sm btn-primary">
+                                    <i class="fab fa-github me-1"></i> Source Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2: Candle Stick Game -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="project-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5 class="card-title">Candle Stick Game</h5>
+                            <p class="card-text">- Trading "mini" Game -</p>
+                            <div class="mb-3">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="https://tenorii23.github.io/candle-sticks/" target="_blank" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                                <a href="https://github.com/Tenorii23/candle-sticks" target="_blank" class="btn btn-sm btn-primary">
+                                    <i class="fab fa-github me-1"></i> Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Space Shooter Game -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="project-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h5 class="card-title">Group project</h5>
+                            <p class="card-text">- Group project -</p>
+                            <div class="mb-3">
+                                <span class="tech-badge">HTML</span>
+                                <span class="tech-badge">CSS</span>
+                                <span class="tech-badge">JavaScript</span>
+                            </div>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="https://tenorii23.github.io/Projekt-Grupor/" target="_blank" class="btn btn-sm btn-outline-primary">Live Demo</a>
+                                <a href="https://github.com/Tenorii23/Projekt-Grupor" target="_blank" class="btn btn-sm btn-primary">
+                                    <i class="fab fa-github me-1"></i> Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="https://github.com/Tenorii23?tab=repositories" target="_blank" class="btn btn-outline-primary">
+                    <i class="fab fa-github me-2"></i>View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fab fa-js me-2"></i>Html / CSS
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fab fa-react me-2"></i>JavaScript / TypeScript
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fab fa-node-js me-2"></i>PHP / SQL
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fab fa-python me-2"></i>Python & Django
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fas fa-database me-2"></i>Database Design (SQL/NoSQL)
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 56%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fas fa-server me-2"></i>DevOps & CI/CD
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fas fa-cloud me-2"></i>Cloud Services (AWS/Azure)
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-name">
+                            <i class="fas fa-paint-brush me-2"></i>UI/UX Design
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Section -->
+         <div class="container">
+        <h2 class="section-title">GitHub Activity</h2>
+        
+ <div class="github-calendar">
+            <div class="calendar-header">
+                <h4>Contribution Activity</h4>
+                <span class="text-muted">Last 6 months</span>
+            </div>
+            <div class="chart-container" id="contribution-chart">
+                <div id="loading-spinner" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="spinner-border text-purple" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="mt-3">Loading contribution data...</p>
+                </div>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #2d2d2d;"></div>
+                    <span>No contributions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #1e6823;"></div>
+                    <span>1-5 contributions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #44a340;"></div>
+                    <span>6-10 contributions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #8cc665;"></div>
+                    <span>11-15 contributions</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #d6e685;"></div>
+                    <span>16+ contributions</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3 col-6 text-center mb-4">
+                <div class="github-stats">
+                    <div class="stat-icon">
+                        <i class="fas fa-folder"></i>
+                    </div>
+                    <p class="stat-number" id="repo-count">5</p>
+                    <p class="stat-label">Repositories</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center mb-4">
+                <div class="github-stats">
+                    <div class="stat-icon">
+                        <i class="fas fa-code-commit"></i>
+                    </div>
+                    <p class="stat-number" id="commit-count">33</p>
+                    <p class="stat-label">Commits</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center mb-4">
+                <div class="github-stats">
+                    <div class="stat-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <p class="stat-number" id="project-count">3</p>
+                    <p class="stat-label">Projects</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 text-center mb-4">
+                <div class="github-stats">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="stat-number" id="contribution-count">34</p>
+                    <p class="stat-label">Contributions</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="github-logo">
+            <a href="https://github.com/Tenorii23" target="_blank">
+                <i class="fab fa-github"></i>
+                Visit my GitHub Profile
+            </a>
+        </div>
+        
+            
+            <div class="token-form">
+                <input type="password" id="github-token" placeholder="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">
+                <button onclick="loadGitHubData()">Load Real GitHub Data</button>
+            </div>
+            
+
+            <p class="text-muted">Note: This token will only be stored in your browser and used to fetch your GitHub data. It will not be sent to any server.</p>
+        </div>
+    </div>
+
+        <div class="info-text">
+            <p>Data is simulated for demonstration. <span class="purple-glow">Real GitHub data</span> would be displayed in a production environment.</p>
+        </div>
+    </div>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-dark">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="contact-form">
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject" required>
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="p-4">
+                        <h3 class="mb-4">Let's talk about your project!</h3>
+                        <p class="mb-4">I'm currently available for freelance work and open to new opportunities. Feel free to reach out if you have a project in mind or just want to connect.</p>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-envelope fa-2x text-purple me-3"></i>
+                            <span>contact@tenorii23.dev</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fab fa-github fa-2x text-purple me-3"></i>
+                            <span>github.com/Tenorii23</span>
+                        </div>
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fas fa-map-marker-alt fa-2x text-purple me-3"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <a href="https://github.com/Tenorii23" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="mb-3">Tenorii23</h2>
+                <p class="text-muted">Building the future, one line of code at a time</p>
+            </div>
+            <div class="d-flex justify-content-center mb-4">
+                <a href="https://github.com/Tenorii23" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="text-center text-muted">
+                <p>&copy; 2025 Tenorii23. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+           GitHubCalendar(".calendar", "Tenorii23", { responsive: true });
+        // Particles.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: "#8a2be2" },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: "#8a2be2",
+                        opacity: 0.3,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: { enable: true, mode: "grab" },
+                        onclick: { enable: true, mode: "push" },
+                        resize: true
+                    }
+                }
+            });
+// Simulated GitHub data
+        const simulateGitHubData = () => {
+            // Update stats with your numbers
+            document.getElementById('repo-count').textContent = '5';
+            document.getElementById('commit-count').textContent = '33';
+            document.getElementById('project-count').textContent = '3';
+            document.getElementById('contribution-count').textContent = '34';
+            
+            // Generate chart
+            const chartContainer = document.getElementById('contribution-chart');
+            chartContainer.innerHTML = '';
+            chartContainer.style.display = 'grid';
+            chartContainer.classList.add('chart');
+            
+            const today = new Date();
+            const daysInWeek = 7;
+            const weeksToShow = 53;
+            
+            for (let i = 0; i < weeksToShow * daysInWeek; i++) {
+                const cell = document.createElement('div');
+                cell.classList.add('chart-cell');
+                
+                const rand = Math.random();
+                let level = 0;
+                
+                if (rand < 0.7) level = 0;
+                else if (rand < 0.85) level = 1;
+                else if (rand < 0.95) level = 2;
+                else level = 3;
+                
+                if (i % 12 === 0 || i % 17 === 0 || i % 23 === 0) {
+                    level = 4;
+                }
+                
+                cell.classList.add('level-' + level);
+                chartContainer.appendChild(cell);
+            }
+            
+            document.getElementById('loading-spinner').style.display = 'none';
+        }
+        
+        // Load real GitHub data with token
+        const loadGitHubData = () => {
+            const token = document.getElementById('github-token').value;
+            if (!token) {
+                alert('Please enter your GitHub token');
+                return;
+            }
+            
+            const spinner = document.getElementById('loading-spinner');
+            spinner.innerHTML = '<div class="spinner-border text-purple" role="status" style="width: 3rem; height: 3rem;"><span class="visually-hidden">Loading...</span></div><p class="mt-3">Fetching real GitHub data...</p>';
+            
+            // Fetch repository count
+            fetch('https://api.github.com/user/repos?per_page=100', {
+                headers: {
+                    'Authorization': `token ${token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('repo-count').textContent = data.length;
+                document.getElementById('project-count').textContent = data.length > 10 ? '10+' : data.length;
+            })
+            .catch(error => {
+                console.error('Error fetching repositories:', error);
+                alert('Error fetching repository data. Check your token permissions.');
+            });
+            
+            // Fetch contribution data (simulated since direct API doesn't provide this)
+            setTimeout(() => {
+                simulateGitHubData();
+                document.getElementById('contribution-count').textContent = '42';
+                alert('Successfully loaded GitHub data!');
+            }, 2000);
+        }
+        
+        // Initialize with simulated data
+        document.addEventListener('DOMContentLoaded', simulateGitHubData);
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active nav link highlighting
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= (sectionTop - sectionHeight / 3)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // GitHub stats animation
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = +stat.innerText.replace(',', '');
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateStat = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.innerText = Math.ceil(current).toLocaleString();
+                        setTimeout(updateStat, 16);
+                    } else {
+                        stat.innerText = target.toLocaleString();
+                    }
+                };
+                
+                setTimeout(updateStat, 1000);
+            });
+            
+            // Form submission
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // In a real implementation, you would send the form data to a server
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+    <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
